@@ -18,11 +18,20 @@
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
                 <!--Top row of buttons-->
-                <Button Text="Add New Recipe" Grid.Row="0" Grid.Column="0" />
-                <Button Text="All Recipes" Grid.Row="0" Grid.Column="1" />
+                <Button Text="Add New Recipe"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Command="{Binding NavigateToAddRecipeCommand}"/>
+                <Button Text="All Recipes"
+                        Grid.Row="0"
+                        Grid.Column="1" />
                 <!--Bottom row of buttons-->
-                <Button Text="Choose Ingredients" Grid.Row="1" Grid.Column="0" />
-                <Button Text="Favorites" Grid.Row="1" Grid.Column="1" />
+                <Button Text="Choose Ingredients"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+                <Button Text="Favorites"
+                        Grid.Row="1"
+                        Grid.Column="1" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>

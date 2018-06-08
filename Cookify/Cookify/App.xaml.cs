@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Cookify.Data;
+using Cookify.Services.Interfaces;
 using Cookify.Views;
 using Xamarin.Forms;
 
@@ -9,11 +11,27 @@ namespace Cookify
 {
 	public partial class App : Application
 	{
-		public App ()
+	    private static LocalDB _localDb;
+
+	    public static LocalDB LocalDb
+	    {
+	        get
+	        {
+	            if (_localDb != null) return _localDb;
+	            var fileHelper = DependencyService.Get<IFileHelper>();
+	            var fileName = fileHelper.GetLocalFilePath("App.db3");
+	            _localDb = new LocalDB(fileName);
+
+	            return _localDb;
+	        }
+	    }
+
+
+	    public App ()
 		{
 			InitializeComponent();
 
-			MainPage = new StartPage();
+			MainPage = new NavigationPage(new StartPage());
 		}
 
 		protected override void OnStart ()

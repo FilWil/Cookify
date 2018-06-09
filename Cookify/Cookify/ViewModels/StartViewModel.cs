@@ -10,16 +10,22 @@ namespace Cookify.ViewModels
 {
     public class StartViewModel : BaseViewModel
     {
-        public Command NavigateToAddRecipeCommand { get; private set; }
+        public Command NavigateToAddRecipeCommand { get; set; }
+        public Command NavigateToAllRecipesCommand { get; set; }
+        public Command NavigateToChooseIngredientsCommand { get; set; }
+        public Command NavigateToFavoritesCommand { get; set; }
 
         public StartViewModel()
         {
-            NavigateToAddRecipeCommand = new Command(async () => await NavigateToAddRecipe());
+            NavigateToAddRecipeCommand = new Command(async () => await NavigateToNextPage(new AddRecipePage()));
+            NavigateToAllRecipesCommand = new Command(async () => await NavigateToNextPage(new AllRecipesPage()));
+            NavigateToChooseIngredientsCommand = new Command(async () => await NavigateToNextPage(new ChooseIngredientsPage()));
+            NavigateToFavoritesCommand = new Command(async () => await NavigateToNextPage(new FavoritesPage()));
         }
 
-        private async Task NavigateToAddRecipe()
+        private async Task NavigateToNextPage(Page page)
         {
-            await NavigationService.NavigateTo(new AddRecipePage());
+            await NavigationService.NavigateTo(page);
         }
     }
 }

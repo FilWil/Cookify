@@ -4,14 +4,15 @@
              x:Class="Cookify.Views.AddRecipePage">
     <ContentPage.Content>
         <StackLayout>
-            <Entry Placeholder="Dish Name" x:Name="EntryDishName"/>
+            <Entry Placeholder="Dish Name" x:Name="EntryDishName" Text="{Binding DishName, Mode=TwoWay}"/>
             <Label Text="List of ingredients"/>
             <ListView>
 
             </ListView>
             <Button Text="Add new ingredient" x:Name="ButtonAddIngredient"/>
             <Label Text="Write your recipe below"/>
-            <Editor x:Name="EditorDescription"/>
+            <Editor x:Name="EditorDescription" Text="{Binding Description, Mode=TwoWay}"/>
+            <Button Text="Add recipe" x:Name="ButtonAddRecipe" Command="{Binding AddNewRecipeCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

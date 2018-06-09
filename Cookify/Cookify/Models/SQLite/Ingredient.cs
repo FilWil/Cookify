@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Text;
 using SQLite;
+using SQLiteNetExtensions.Attributes;
 
 namespace Cookify.Models.SQLite
 {
@@ -12,5 +13,7 @@ namespace Cookify.Models.SQLite
 
         public string Name { get; set; }
 
+        [ForeignKey(typeof(Recipe))]
+        public int RecipeId { get; set; }
     }
 }

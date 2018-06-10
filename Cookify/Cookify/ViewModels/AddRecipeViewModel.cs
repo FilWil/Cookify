@@ -5,6 +5,11 @@ using System.Text;
 using System.Threading.Tasks;
 using Cookify.Models.SQLite;
 using Xamarin.Forms;
+using System.ComponentModel;
+using System.Runtime.CompilerServices;
+using Cookify.Annotations;
+using Cookify.Services.Classes;
+using Cookify.Views;
 
 namespace Cookify.ViewModels
 {
@@ -14,6 +19,7 @@ namespace Cookify.ViewModels
         private DateTime _createDateTime;
         private ObservableCollection<Ingredient> _ingredients;
         public Command AddNewRecipeCommand { get; set; }
+        public Command AddNewIngrediantCommand { get; set; }
 
         public string DishName
         {
@@ -40,6 +46,8 @@ namespace Cookify.ViewModels
         public AddRecipeViewModel()
         {
             AddNewRecipeCommand = new Command(async () => await AddNewRecipe());
+            AddNewIngrediantCommand = new Command(async () => await NavigateToNextPage(new AddIngredientPage()));
+            _ingredients = new ObservableCollection<Ingredient>();
         }
 
         private async Task AddNewRecipe()
@@ -52,6 +60,11 @@ namespace Cookify.ViewModels
             };
 
             await App.LocalDb.SaveItemAsync(recipe);
+        }
+
+        private async Task NavigateToNextPage(Page page)
+        {
+            await NavigationService.NavigateTo(page);
         }
     }
 }

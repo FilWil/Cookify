@@ -5,12 +5,13 @@
              Title="ADD RECIPE">
     <ContentPage.Content>
         <StackLayout>
+            <Label Text="Dish name"/>
             <Entry Placeholder="Dish Name" x:Name="EntryDishName" Text="{Binding DishName, Mode=TwoWay}"/>
             <Label Text="List of ingredients"/>
-            <ListView>
-
+            <ListView ItemsSource="{Binding Ingredians}">
+                
             </ListView>
-            <Button Text="Add new ingredient" x:Name="ButtonAddIngredient"/>
+            <Button Text="Add new ingredient" x:Name="ButtonAddIngredient" Command="{Binding AddNewIngrediantCommand}"/>
             <Label Text="Write your recipe below"/>
             <Editor x:Name="EditorDescription" Text="{Binding Description, Mode=TwoWay}"/>
             <Button Text="Add recipe" x:Name="ButtonAddRecipe" Command="{Binding AddNewRecipeCommand}"/>

@@ -11,12 +11,12 @@ using Xamarin.Forms.Xaml;
 namespace Cookify.Views
 {
 	[XamlCompilation(XamlCompilationOptions.Compile)]
-	public partial class FavoritesPage : ContentPage
+	public partial class DetailRecipePage : ContentPage
 	{
-		public FavoritesPage ()
+		public DetailRecipePage ()
 		{
             InitializeComponent();
-            var viewModel = new FavoritesViewModel();
+            var viewModel = new DetailRecipeViewModel();
             BindingContext = viewModel;
         }
 	}

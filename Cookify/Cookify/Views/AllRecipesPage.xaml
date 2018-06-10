@@ -16,17 +16,19 @@
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <ListView ItemsSource="{Binding Recipes}" 
+                <Button Text="Banana" Command="{Binding DetailRecipeCommand}" />
+                <!--<ListView ItemsSource="{Binding Recipes}" 
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand"
                           Grid.Row="0"
                           Grid.Column="0">
+                    
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding DishDescription}" Detail="{Binding Id}" />
+                            --><!--"<TextCell Text="{Binding DishName}" Detail="{Binding Id}" Command="{Binding DetailRecipeCommand}" />--><!--
                         </DataTemplate>
                     </ListView.ItemTemplate>
-                </ListView>
+                </ListView>-->
             </Grid>
         </StackLayout>
     </ContentPage.Content>

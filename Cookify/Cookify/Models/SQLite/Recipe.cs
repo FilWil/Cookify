@@ -7,7 +7,7 @@ using SQLiteNetExtensions.Attributes;
 namespace Cookify.Models.SQLite
 {
    public class Recipe
-    {
+   {
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
@@ -19,7 +19,7 @@ namespace Cookify.Models.SQLite
 
         public DateTime CreateDateTime { get; set; }
 
-        [OneToMany]
-        public List<Ingredient> Ingredients { get; set; }
-    }
+        //[OneToMany]
+        //public List<Ingredient> Ingredients { get; set; }
+   }
 }

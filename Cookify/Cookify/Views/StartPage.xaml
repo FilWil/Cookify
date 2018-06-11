@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Cookify.Views.StartPage">
+    <ContentPage.Content>
+        <StackLayout>
+            <!--Search bar at the top of page-->
+            <Entry Placeholder="Search" x:Name="EntrySearchBar"/>
+            <Grid>
+                <!--Top row-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--Bottom row-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--Top row of buttons-->
+                <Button Text="Add New Recipe"
+                        Grid.Row="0"
+                        Grid.Column="0"
+                        Command="{Binding NavigateToAddRecipeCommand}"/>
+                <Button Text="All Recipes"
+                        Grid.Row="0"
+                        Grid.Column="1" 
+                        Command="{Binding NavigateToAllRecipesCommand}"/>
+                <!--Bottom row of buttons-->
+                <Button Text="Choose Ingredients"
+                        Grid.Row="1"
+                        Grid.Column="0" 
+                        Command="{Binding NavigateToChooseIngredientsCommand}"/>
+                <Button Text="Favorites"
+                        Grid.Row="1"
+                        Grid.Column="1" 
+                        Command="{Binding NavigateToFavoritesCommand}"/>
+            </Grid>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

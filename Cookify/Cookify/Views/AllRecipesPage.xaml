@@ -25,7 +25,7 @@
                     
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            "<TextCell Text="{Binding DishName}" Detail="{Binding Id}" Command="{Binding DetailRecipeCommand}" />
+                            <TextCell Text="{Binding DishName}" Detail="{Binding Id}" Command="{Binding DetailRecipeCommand}" />
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

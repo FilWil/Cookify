@@ -17,9 +17,21 @@ namespace Cookify.ViewModels
     {
         private string _dishName, _category, _description;
         private DateTime _createDateTime;
-        private ObservableCollection<Ingredient> _ingredients;
+        private ObservableCollection<Ingredient> Ingredients;
         public Command AddNewRecipeCommand { get; set; }
         public Command AddNewIngrediantCommand { get; set; }
+        private string _ingredientName;
+
+        public string IngredientName
+        {
+            get => _ingredientName;
+            set
+            {
+                if (_ingredientName == value) return;
+                _ingredientName = Ingredients[2].Name;
+                OnPropertyChanged(nameof(IngredientName));
+            }
+        }
 
         public string DishName
         {
@@ -47,7 +59,8 @@ namespace Cookify.ViewModels
         {
             AddNewRecipeCommand = new Command(async () => await AddNewRecipe());
             AddNewIngrediantCommand = new Command(async () => await NavigateToNextPage(new AddIngredientPage()));
-            _ingredients = new ObservableCollection<Ingredient>();
+            Ingredients = new ObservableCollection<Ingredient>();
+            Init();
         }
 
         private async Task AddNewRecipe()
@@ -66,6 +79,16 @@ namespace Cookify.ViewModels
         private async Task NavigateToNextPage(Page page)
         {
             await NavigationService.NavigateTo(page);
+        }
+
+        private async void Init()
+        {
+            var ingredients = await App.LocalDB.GetItems<Ingredient>();
+
+            foreach (var ingredient in ingredients)
+            {
+                Ingredients.Add(ingredient);
+            }
         }
     }
 }

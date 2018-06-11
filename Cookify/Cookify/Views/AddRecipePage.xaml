@@ -8,8 +8,17 @@
             <Label Text="Dish name"/>
             <Entry Placeholder="Dish Name" x:Name="EntryDishName" Text="{Binding DishName, Mode=TwoWay}"/>
             <Label Text="List of ingredients"/>
-            <ListView ItemsSource="{Binding Ingredians}">
-                
+            <ListView ItemsSource="{Binding Ingredients}" 
+                      VerticalOptions="CenterAndExpand" 
+                      HorizontalOptions="CenterAndExpand"
+                      Grid.Row="0"
+                      Grid.Column="0">
+
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding IngredientName}"  />
+                    </DataTemplate>
+                </ListView.ItemTemplate>
             </ListView>
             <Button Text="Add new ingredient" x:Name="ButtonAddIngredient" Command="{Binding AddNewIngrediantCommand}"/>
             <Label Text="Write your recipe below"/>

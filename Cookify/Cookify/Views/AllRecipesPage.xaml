@@ -20,12 +20,15 @@
                 <ListView ItemsSource="{Binding Recipes}" 
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand"
+                          ItemTapped="ListView_OnItemTapped"
                           Grid.Row="0"
                           Grid.Column="0">
                     
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding DishName}" Detail="{Binding Id}" Command="{Binding DetailRecipeCommand}" />
+
+                            <TextCell Text="{Binding DishName}" Detail="{Binding Id}"   >
+                            </TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

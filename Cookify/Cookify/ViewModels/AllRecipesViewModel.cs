@@ -17,20 +17,15 @@ namespace Cookify.ViewModels
     class AllRecipesViewModel : BaseViewModel
     {
         public ObservableCollection<Recipe> Recipes { get; set; }
-        public Command DetailRecipeCommand { get; set; }
+        //public Command DetailRecipeCommand { get; set; }
         
         public AllRecipesViewModel()
         {
-            ///DetailRecipeCommand = new Command(async () => await NavigateToNextPage(new DetailRecipePage()));
-            DetailRecipeCommand = new Command(async () => await NavigateToNextPage(new DetailRecipePage()));
+            //DetailRecipeCommand = new Command(async () => await NavigateToNextPage(new DetailRecipePage()));
+            //DetailRecipeCommand = new Command(async () => await NavigateToNextPage(new DetailRecipePage()));
             Recipes = new ObservableCollection<Recipe>();
 
             Init();
-        }
-
-        private async Task NavigateToNextPage(Page page)
-        {
-            await NavigationService.NavigateTo(page);
         }
 
         private async void Init()

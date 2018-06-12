@@ -7,7 +7,12 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookify.Android", "Cookify\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookify.iOS", "Cookify\Cookify.iOS\Cookify.iOS.csproj", "{9A47C253-165E-4710-B17F-59D2B08EADAE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Cookify", "Cookify\Cookify\Cookify.csproj", "{255C57D6-52B3-469E-9C71-59CE2236C1B5}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Cookify", "Cookify\Cookify\Cookify.csproj", "{255C57D6-52B3-469E-9C71-59CE2236C1B5}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{151D317C-66E8-42CA-A9C4-9E581C9BE204}"
+	ProjectSection(SolutionItems) = preProject
+		TODO.txt = TODO.txt
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

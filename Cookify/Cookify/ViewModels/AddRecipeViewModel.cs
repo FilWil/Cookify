@@ -17,21 +17,9 @@ namespace Cookify.ViewModels
     {
         private string _dishName, _category, _description;
         private DateTime _createDateTime;
-        private ObservableCollection<Ingredient> Ingredients;
+        public ObservableCollection<Ingredient> Ingredients;
         public Command AddNewRecipeCommand { get; set; }
         public Command AddNewIngrediantCommand { get; set; }
-        private string _ingredientName;
-
-        public string IngredientName
-        {
-            get => _ingredientName;
-            set
-            {
-                if (_ingredientName == value) return;
-                _ingredientName = Ingredients[2].Name;
-                OnPropertyChanged(nameof(IngredientName));
-            }
-        }
 
         public string DishName
         {
@@ -41,6 +29,17 @@ namespace Cookify.ViewModels
                 if (_dishName == value) return;
                 _dishName = value;
                 OnPropertyChanged(nameof(DishName));
+            }
+        }
+
+        public string Category
+        {
+            get => _category;
+            set
+            {
+                if (_category == value) return;
+                _category = value;
+                OnPropertyChanged(nameof(Category));
             }
         }
 
@@ -59,27 +58,28 @@ namespace Cookify.ViewModels
         {
             AddNewRecipeCommand = new Command(async () => await AddNewRecipe());
             AddNewIngrediantCommand = new Command(async () => await NavigateToNextPage(new AddIngredientPage()));
+            
             Ingredients = new ObservableCollection<Ingredient>();
             Init();
         }
 
         private async Task AddNewRecipe()
         {
+
             var recipe = new Recipe
             {
                 DishName = DishName,
                 CreateDateTime = DateTime.Now,
-                Description = Description
+                Description = Description,
+                Category = Category
             };
 
             await App.LocalDB.SaveItemAsync(recipe);
-                
+
+            await NavigateToNextPage(new AllRecipesPage());
         }
 
-        private async Task NavigateToNextPage(Page page)
-        {
-            await NavigationService.NavigateTo(page);
-        }
+        
 
         private async void Init()
         {

@@ -1,0 +1,7 @@
+1. AddRecipe:
+	- powi¹zanie listy ze sk³adnikami (!IMPORTANT)
+2. Favorites
+	-implementacja
+3. AllRecipes
+	-textcell wymienic na itemcell (zdjêcie + nazwa + czas gotowania + gwiazdka favorites)
+4. SearchBar

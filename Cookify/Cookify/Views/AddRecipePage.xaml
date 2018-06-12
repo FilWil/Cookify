@@ -7,16 +7,14 @@
         <StackLayout>
             <Label Text="Dish name"/>
             <Entry Placeholder="Dish Name" x:Name="EntryDishName" Text="{Binding DishName, Mode=TwoWay}"/>
+            <Entry Placeholder="Category" x:Name="Category" Text="{Binding Category, Mode=TwoWay}"/>
             <Label Text="List of ingredients"/>
-            <ListView ItemsSource="{Binding Ingredients}" 
-                      VerticalOptions="CenterAndExpand" 
-                      HorizontalOptions="CenterAndExpand"
-                      Grid.Row="0"
-                      Grid.Column="0">
+            <ListView ItemsSource="{Binding Ingredients}"
+                      CachingStrategy="RecycleElement">
 
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding IngredientName}"  />
+                        <TextCell Text="{Binding .}" Detail="{Binding Id}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

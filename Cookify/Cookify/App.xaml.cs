@@ -19,7 +19,7 @@ namespace Cookify
 	        {
 	            if (localDB == null)
 	            {
-	                localDB = new LocalDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("App.db3"));
+	                localDB = new LocalDB(DependencyService.Get<IFileHelper>().GetLocalFilePath("App.db3"));           
 	            }
 	            return localDB;
             }
@@ -29,7 +29,7 @@ namespace Cookify
         public App ()
 		{
 			InitializeComponent();
-
+            
 			MainPage = new NavigationPage(new StartPage());
 		}
 

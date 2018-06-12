@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 using System.Threading.Tasks;
+using Cookify.Views;
 using Xamarin.Forms;
 
 namespace Cookify.ViewModels
@@ -36,6 +37,7 @@ namespace Cookify.ViewModels
             };
 
             await App.LocalDB.SaveItemAsync(ingredient);
+            await NavigateToNextPage(new AddIngredientPage());
         }
     }
 }

@@ -14,9 +14,11 @@ namespace Cookify.Data
         public LocalDB(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
+            //database.DropTableAsync<Recipe>().Wait();
+            //database.DropTableAsync<Ingredient>().Wait();
             database.CreateTableAsync<Recipe>().Wait();
-            database.CreateTableAsync<Ingredient>();
-            database.CreateTableAsync<Favorites>();
+            database.CreateTableAsync<Ingredient>().Wait();
+            database.CreateTableAsync<Favorites>().Wait();
         }
 
         public async Task<int> SaveItemAsync<T>(T item)

@@ -28,6 +28,8 @@ namespace Cookify.Data
             if (result == 0)
                 result = await database.InsertAsync(item);
 
+            //System.Diagnostics.Debug.WriteLine("Item ::: " + item.ToString());
+
             return result;
         }
 

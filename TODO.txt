@@ -1,7 +1,13 @@
-1. AddRecipe:
-	- powi�zanie listy ze sk�adnikami (!IMPORTANT)
+﻿1. AddRecipe:
+	- Dlaczego null przy wczytywaniu listy składników w Detail?
+
 2. Favorites
-	-implementacja
+	- Pobieranie wartości z przepisu
+	- Przyciśniecie na przepis powoduje przejście do jego szczegółów
+
 3. AllRecipes
-	-textcell wymienic na itemcell (zdj�cie + nazwa + czas gotowania + gwiazdka favorites)
+	-textcell wymienic na itemcell (zdjêcie + nazwa + czas gotowania + gwiazdka favorites)
+
 4. SearchBar
+
+5. Usuwanie przepisów

@@ -8,11 +8,24 @@ namespace Cookify.ViewModels
 {
     class FavoritesViewModel : BaseViewModel
     {
-        private ObservableCollection<Favorites> _favorites;
+        public ObservableCollection<Favorites> Favorites { get; set; }
+
 
         public FavoritesViewModel()
         {
-            _favorites = new ObservableCollection<Favorites>();
+            Favorites = new ObservableCollection<Favorites>();
+
+            Init();
+        }
+
+        private async void Init()
+        {
+            var favorites = await App.LocalDB.GetItems<Favorites>();
+
+            foreach (var fav in favorites)
+            {
+                Favorites.Add(fav);
+            }
         }
     }
 }

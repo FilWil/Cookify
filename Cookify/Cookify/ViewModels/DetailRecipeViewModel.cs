@@ -6,6 +6,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cookify.Data;
 using Cookify.Models.SQLite;
+using Xamarin.Forms;
 
 namespace Cookify.ViewModels
 {
@@ -15,7 +16,10 @@ namespace Cookify.ViewModels
         private string _recipeName { get; set; }
         private string _category { get; set; }
         private string _description { get; set; }
+        private int _id;
         private DateTime _creationDateTime { get; set; }
+        private List<Ingredient> _ingredients { get; set; }
+        public Command AddRecipeToFavoriteCommand { get; set; }
 
         public string RecipeName
         {
@@ -61,12 +65,34 @@ namespace Cookify.ViewModels
             }
         }
 
+        public List<Ingredient> Ingredients
+        {
+            get => _ingredients;
+            set
+            {
+                if (_ingredients == value) return;
+                _ingredients = value;
+                OnPropertyChanged(nameof(Ingredients));
+            }
+        }
+
         public DetailRecipeViewModel(int selectedRecipeId)
         {  
             PopulateDetails(selectedRecipeId);
+            AddRecipeToFavoriteCommand = new Command(async () => await AddRecipeToFavorite());
         }
 
-        private async void PopulateDetails(int selectedRecipeId)
+        public async Task AddRecipeToFavorite()
+        {
+            var favorite = new Favorites()
+            {
+                RecipeId = _id
+            };
+
+            await App.LocalDB.SaveItemAsync(favorite);
+        }
+
+    private async void PopulateDetails(int selectedRecipeId)
         {
 
             var rec = await App.LocalDB.GetItems<Recipe>();
@@ -78,6 +104,8 @@ namespace Cookify.ViewModels
                 RecipeName = recipe.DishName;
                 Description = recipe.Description;
                 CreationDateTime = recipe.CreateDateTime;
+                var ing = recipe.Ingredients;
+                Ingredients = ing;
             }
         }
     }

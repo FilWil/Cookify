@@ -24,6 +24,14 @@
                 <Label />
                 <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
                 <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                <Label Text="{Binding Ingredients}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                <Button Text="Dodaj do ulubionych"
+                    BackgroundColor="White"
+                    BorderRadius="10"
+                    BorderWidth="2"
+                    BorderColor="Black"
+                    HorizontalOptions="Center"
+                    Command="{Binding AddRecipeToFavoriteCommand}"/>        
             </StackLayout>
         </Grid>
     </ContentPage.Content>

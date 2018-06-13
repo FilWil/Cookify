@@ -5,9 +5,32 @@
              Title="FAVORITES PAGE">
     <ContentPage.Content>
         <StackLayout>
-            <Label Text="Favorites"
-                VerticalOptions="CenterAndExpand" 
-                HorizontalOptions="CenterAndExpand" />
+            <Grid>
+                <!--Top row-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--Bottom row-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <!--<Button Text="Banana" Command="{Binding DetailRecipeCommand}" />-->
+                <ListView ItemsSource="{Binding Favorites}" 
+                          VerticalOptions="CenterAndExpand" 
+                          HorizontalOptions="CenterAndExpand"
+                          Grid.Row="0"
+                          Grid.Column="0">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding RecipeId}"  >
+                            </TextCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+            </Grid>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

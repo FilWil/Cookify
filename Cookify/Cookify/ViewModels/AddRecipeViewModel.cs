@@ -13,13 +13,22 @@ using Cookify.Views;
 
 namespace Cookify.ViewModels
 {
+    public class SelectableData<T>
+    {
+        public string Data { get; set; }
+        public bool Selected { get; set; }
+    }
+
     public class AddRecipeViewModel : BaseViewModel
     {
         private string _dishName, _category, _description;
         private DateTime _createDateTime;
-        public ObservableCollection<Ingredient> Ingredients;
+        //public ObservableCollection<Ingredient> Ingredients;
         public Command AddNewRecipeCommand { get; set; }
         public Command AddNewIngrediantCommand { get; set; }
+
+        public List<SelectableData<Ingredient>> Ingredients { get; set; }
+
 
         public string DishName
         {
@@ -59,27 +68,43 @@ namespace Cookify.ViewModels
             AddNewRecipeCommand = new Command(async () => await AddNewRecipe());
             AddNewIngrediantCommand = new Command(async () => await NavigateToNextPage(new AddIngredientPage()));
             
-            Ingredients = new ObservableCollection<Ingredient>();
+            Ingredients = new List<SelectableData<Ingredient>>();
             Init();
         }
 
         private async Task AddNewRecipe()
         {
-
             var recipe = new Recipe
             {
                 DishName = DishName,
                 CreateDateTime = DateTime.Now,
                 Description = Description,
-                Category = Category
+                Category = Category,
+                Ingredients = getIngredients()
             };
+
+            System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + recipe.Ingredients.Count);
 
             await App.LocalDB.SaveItemAsync(recipe);
 
             await NavigateToNextPage(new AllRecipesPage());
         }
 
-        
+        public List<Ingredient> getIngredients()
+        {
+            var list = new List<Ingredient>();
+
+            foreach (var data in Ingredients)
+            {
+                if (data.Selected == true)
+                {
+                    list.Add(new Ingredient() { Name = data.Data });
+                }
+            }
+
+            return list;
+        }
+
 
         private async void Init()
         {
@@ -87,7 +112,7 @@ namespace Cookify.ViewModels
 
             foreach (var ingredient in ingredients)
             {
-                Ingredients.Add(ingredient);
+                Ingredients.Add(new SelectableData<Ingredient>() { Data = ingredient.Name, Selected = false });
             }
         }
     }

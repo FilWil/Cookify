@@ -22,6 +22,16 @@
                 <Label Text="{Binding Category}" HorizontalOptions="CenterAndExpand" FontSize="Micro"/>
                 <Label />
                 <Label />
+                <ListView ItemsSource="{Binding IngredientNamesList}" 
+                          VerticalOptions="CenterAndExpand" 
+                          HorizontalOptions="CenterAndExpand">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
                 <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
                 <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
                 <Label Text="{Binding Ingredients}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
@@ -32,16 +42,7 @@
                     BorderColor="Black"
                     HorizontalOptions="Center"
                     Command="{Binding AddRecipeToFavoriteCommand}"/>
-                <ListView ItemsSource="{Binding IngredientNamesList}" 
-                          VerticalOptions="CenterAndExpand" 
-                          HorizontalOptions="CenterAndExpand">
-
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="ddd"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                
             </StackLayout>
         </Grid>
     </ContentPage.Content>

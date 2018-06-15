@@ -122,14 +122,13 @@ namespace Cookify.ViewModels
         }
 
         public void ExtractIngredientNamesList(string nameBlob, ObservableCollection<IngredientNames> collectionOfNames)
-        {
-            
+        { 
 
             string[] names = nameBlob.Split(' ');
 
             foreach (var name in names)
             {
-                collectionOfNames.Add(new IngredientNames() {Name = name});
+                collectionOfNames.Add(new IngredientNames {Name = name});
             }
         }
     }

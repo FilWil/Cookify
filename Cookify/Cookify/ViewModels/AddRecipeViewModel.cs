@@ -91,8 +91,8 @@ namespace Cookify.ViewModels
 
             await NavigateToNextPage(new AllRecipesPage());
 
-            var temp = await App.LocalDB.GetRecipeById(recipe.Id);
-            System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);
+            //var temp = await App.LocalDB.GetRecipeById(recipe.Id);
+            //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);
         }
 
         public List<Ingredient> getIngredients()
@@ -121,6 +121,8 @@ namespace Cookify.ViewModels
                     namesBlob.Append(data.Data + " ");
                 }
             }
+
+            namesBlob.Remove(namesBlob.Length - 1, 1);
 
             return namesBlob.ToString();
         }

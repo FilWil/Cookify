@@ -11,6 +11,11 @@ using Xamarin.Forms;
 
 namespace Cookify.ViewModels
 {
+    public class IngredientNames
+    {
+        public string Name { get; set; }
+    }
+
     class DetailRecipeViewModel : BaseViewModel
     {
 
@@ -21,7 +26,8 @@ namespace Cookify.ViewModels
         private DateTime _creationDateTime { get; set; }
         private List<Ingredient> _ingredients { get; set; }
         public Command AddRecipeToFavoriteCommand { get; set; }
-        public ObservableCollection<string> IngredientsNamesCollection { get; set; }
+        //public ObservableCollection<string> IngredientsNamesCollection { get; set; }
+        public ObservableCollection<IngredientNames> IngredientNamesList { get; set; }
 
         public string RecipeName
         {
@@ -80,10 +86,9 @@ namespace Cookify.ViewModels
 
         public DetailRecipeViewModel(int selectedRecipeId)
         {
-            
+            IngredientNamesList = new ObservableCollection<IngredientNames>();
             PopulateDetails(selectedRecipeId);
             AddRecipeToFavoriteCommand = new Command(async () => await AddRecipeToFavorite());
-            
         }
 
         public async Task AddRecipeToFavorite()
@@ -96,7 +101,7 @@ namespace Cookify.ViewModels
             await App.LocalDB.SaveItemAsync(favorite);
         }
 
-    private async void PopulateDetails(int selectedRecipeId)
+        private async void PopulateDetails(int selectedRecipeId)
         {
 
             var rec = await App.LocalDB.GetItems<Recipe>();
@@ -111,14 +116,21 @@ namespace Cookify.ViewModels
                 //var ing = recipe.Ingredients;
                 //Ingredients = ing;
                 Ingredients = recipe.Ingredients;
-                
+                ExtractIngredientNamesList(recipe.IngredientsBlob, IngredientNamesList);
             }
             
         }
 
-        public ObservableCollection<string> ExtractIngredientNamesList(string nameBlob)
+        public void ExtractIngredientNamesList(string nameBlob, ObservableCollection<IngredientNames> collectionOfNames)
         {
-                IngredientsNamesCollection = new ObservableCollection<string>();
+            
+
+            string[] names = nameBlob.Split(' ');
+
+            foreach (var name in names)
+            {
+                collectionOfNames.Add(new IngredientNames() {Name = name});
+            }
         }
     }
 }

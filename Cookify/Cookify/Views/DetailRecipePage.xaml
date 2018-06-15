@@ -32,13 +32,13 @@
                     BorderColor="Black"
                     HorizontalOptions="Center"
                     Command="{Binding AddRecipeToFavoriteCommand}"/>
-                <ListView ItemsSource="{Binding IngredientsCollection}" 
+                <ListView ItemsSource="{Binding IngredientNamesList}" 
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
+                            <TextCell Text="ddd"/>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

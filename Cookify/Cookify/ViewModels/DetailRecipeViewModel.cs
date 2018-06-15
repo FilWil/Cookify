@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Diagnostics;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cookify.Data;
@@ -20,6 +21,7 @@ namespace Cookify.ViewModels
         private DateTime _creationDateTime { get; set; }
         private List<Ingredient> _ingredients { get; set; }
         public Command AddRecipeToFavoriteCommand { get; set; }
+        public ObservableCollection<string> IngredientsNamesCollection { get; set; }
 
         public string RecipeName
         {
@@ -77,9 +79,11 @@ namespace Cookify.ViewModels
         }
 
         public DetailRecipeViewModel(int selectedRecipeId)
-        {  
+        {
+            
             PopulateDetails(selectedRecipeId);
             AddRecipeToFavoriteCommand = new Command(async () => await AddRecipeToFavorite());
+            
         }
 
         public async Task AddRecipeToFavorite()
@@ -104,9 +108,17 @@ namespace Cookify.ViewModels
                 RecipeName = recipe.DishName;
                 Description = recipe.Description;
                 CreationDateTime = recipe.CreateDateTime;
-                var ing = recipe.Ingredients;
-                Ingredients = ing;
+                //var ing = recipe.Ingredients;
+                //Ingredients = ing;
+                Ingredients = recipe.Ingredients;
+                
             }
+            
+        }
+
+        public ObservableCollection<string> ExtractIngredientNamesList(string nameBlob)
+        {
+                IngredientsNamesCollection = new ObservableCollection<string>();
         }
     }
 }

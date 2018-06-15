@@ -20,7 +20,10 @@ namespace Cookify.Models.SQLite
 
         public DateTime CreateDateTime { get; set; }
 
-        [OneToMany]
+        //[OneToMany]
+        [TextBlob(nameof(IngredientsBlob))]
         public List<Ingredient> Ingredients { get; set; }
+
+        public string IngredientsBlob { get; set; }
     }
 }

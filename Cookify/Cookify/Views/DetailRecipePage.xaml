@@ -31,7 +31,17 @@
                     BorderWidth="2"
                     BorderColor="Black"
                     HorizontalOptions="Center"
-                    Command="{Binding AddRecipeToFavoriteCommand}"/>        
+                    Command="{Binding AddRecipeToFavoriteCommand}"/>
+                <ListView ItemsSource="{Binding IngredientsCollection}" 
+                          VerticalOptions="CenterAndExpand" 
+                          HorizontalOptions="CenterAndExpand">
+
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
             </StackLayout>
         </Grid>
     </ContentPage.Content>

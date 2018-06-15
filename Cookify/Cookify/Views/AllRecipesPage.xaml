@@ -5,34 +5,20 @@
              Title="ALL RECIPES">
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <!--Top row-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <!--Bottom row-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!--<Button Text="Banana" Command="{Binding DetailRecipeCommand}" />-->
-                <ListView ItemsSource="{Binding Recipes}" 
+            <!--<Button Text="Banana" Command="{Binding DetailRecipeCommand}" />-->
+            <ListView ItemsSource="{Binding Recipes}" 
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand"
-                          ItemTapped="ListView_OnItemTapped"
-                          Grid.Row="0"
-                          Grid.Column="0">
-                    
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
+                          ItemTapped="ListView_OnItemTapped">
 
-                            <TextCell Text="{Binding DishName}" Detail="{Binding Id}"   >
-                            </TextCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+
+                        <TextCell Text="{Binding DishName}" Detail="{Binding Id}"   >
+                        </TextCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

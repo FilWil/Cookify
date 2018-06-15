@@ -8,6 +8,7 @@ using Xamarin.Forms;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using Cookify.Annotations;
+using Cookify.Data;
 using Cookify.Services.Classes;
 using Cookify.Views;
 
@@ -80,7 +81,8 @@ namespace Cookify.ViewModels
                 CreateDateTime = DateTime.Now,
                 Description = Description,
                 Category = Category,
-                Ingredients = getIngredients()
+                Ingredients = getIngredients(),
+                IngredientsBlob = GetIngredientsNames()
             };
 
             System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + recipe.Ingredients.Count);
@@ -88,6 +90,9 @@ namespace Cookify.ViewModels
             await App.LocalDB.SaveItemAsync(recipe);
 
             await NavigateToNextPage(new AllRecipesPage());
+
+            var temp = await App.LocalDB.GetRecipeById(recipe.Id);
+            System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);
         }
 
         public List<Ingredient> getIngredients()
@@ -96,15 +101,29 @@ namespace Cookify.ViewModels
 
             foreach (var data in Ingredients)
             {
-                if (data.Selected == true)
+                if (data.Selected)
                 {
-                    list.Add(new Ingredient() { Name = data.Data });
+                    list.Add(new Ingredient() { Name = data.Data});
                 }
             }
 
             return list;
         }
 
+        public string GetIngredientsNames()
+        {
+            var namesBlob = new StringBuilder();
+
+            foreach (var data in Ingredients)
+            {
+                if (data.Selected)
+                {
+                    namesBlob.Append(data.Data + " ");
+                }
+            }
+
+            return namesBlob.ToString();
+        }
 
         private async void Init()
         {

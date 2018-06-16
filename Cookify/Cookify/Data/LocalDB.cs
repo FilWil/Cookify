@@ -48,6 +48,13 @@ namespace Cookify.Data
             return await database.Table<T>().ToListAsync();
         }
 
+        internal async Task<List<Recipe>> GetRecipesBySearch(string searchPattern)
+        {
+            searchPattern = searchPattern.ToLower();
+                return await database.Table<Recipe>().Where(r => r.DishName.ToLower().Contains(searchPattern))
+                    .ToListAsync();
+        }
+
         internal async Task<List<Recipe>> GetRecipesByChosenIngredients(List<Ingredient> Ingredients)
         {
             var ingredientNamesFromRecipes = new List<string>();

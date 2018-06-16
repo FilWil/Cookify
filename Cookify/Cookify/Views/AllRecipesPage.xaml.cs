@@ -30,12 +30,6 @@ namespace Cookify.Views
         {
             var selectedRecipe = ((ListView)sender).SelectedItem as Recipe;
             await NavigationService.NavigateTo(new DetailRecipePage(selectedRecipe.Id));
-
-            //https://montemagno.com/custom-listview-viewcells-in-xamarinforms/+
-            //System.Diagnostics.Debug.WriteLine("Item ::: " + selectedRecipe.Id.ToString());
-
-            //var selectedRecipe = (Recipe)e.Item;
-            //await NavigationService.NavigateTo(new DetailRecipePage(selectedRecipe.Id));
         }
     }
 }

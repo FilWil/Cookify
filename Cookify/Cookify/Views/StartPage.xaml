@@ -5,7 +5,22 @@
     <ContentPage.Content>
         <StackLayout>
             <!--Search bar at the top of page-->
-            <Entry Placeholder="Search" x:Name="EntrySearchBar"/>
+            <Grid>
+                <!--Top row-->
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+                <!--Bottom row-->
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Entry Placeholder="Search" x:Name="EntrySearchBar" Grid.Row="0" Grid.Column="0" Text="{Binding Search, Mode=TwoWay}"/>
+                <Button Grid.Row="0" Grid.Column="1" Text="Lupa" Command="{Binding SearchCommand}"/>
+            </Grid>
+            
             <Grid>
                 <!--Top row-->
                 <Grid.RowDefinitions>

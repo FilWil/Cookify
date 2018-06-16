@@ -14,7 +14,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="*" />
             </Grid.ColumnDefinitions>
-            <StackLayout Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" >
+            <StackLayout Grid.ColumnSpan="2" >
                 <Label Text="{Binding RecipeName}" HorizontalOptions="CenterAndExpand" FontSize="40" />
                 <Label />
                 <Image />
@@ -23,9 +23,9 @@
                 <Label />
                 <Label />
                 <ListView ItemsSource="{Binding IngredientNamesList}" 
-                          VerticalOptions="CenterAndExpand" 
-                          HorizontalOptions="CenterAndExpand">
-
+                          VerticalOptions="StartAndExpand"
+                          HorizontalOptions="CenterAndExpand"
+                          RowHeight="50">
                     <ListView.ItemTemplate>
                         <DataTemplate>
                             <TextCell Text="{Binding Name}"/>
@@ -34,7 +34,8 @@
                 </ListView>
                 <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
                 <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
-                <Label Text="{Binding Ingredients}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+                <Label />
+                <Label />
                 <Button Text="Dodaj do ulubionych"
                     BackgroundColor="White"
                     BorderRadius="10"
@@ -42,7 +43,6 @@
                     BorderColor="Black"
                     HorizontalOptions="Center"
                     Command="{Binding AddRecipeToFavoriteCommand}"/>
-                
             </StackLayout>
         </Grid>
     </ContentPage.Content>

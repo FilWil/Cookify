@@ -16,6 +16,7 @@ namespace Cookify.Data
             database = new SQLiteAsyncConnection(dbPath);
             //database.DropTableAsync<Recipe>().Wait();
             //database.DropTableAsync<Ingredient>().Wait();
+            //database.DropTableAsync<Favorites>().Wait();
             database.CreateTableAsync<Recipe>().Wait();
             database.CreateTableAsync<Ingredient>().Wait();
             database.CreateTableAsync<Favorites>().Wait();
@@ -27,8 +28,6 @@ namespace Cookify.Data
 
             if (result == 0)
                 result = await database.InsertAsync(item);
-
-            //System.Diagnostics.Debug.WriteLine("Item ::: " + item.ToString());
 
             return result;
         }

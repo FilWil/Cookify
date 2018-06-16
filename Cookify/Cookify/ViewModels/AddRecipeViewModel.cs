@@ -81,11 +81,11 @@ namespace Cookify.ViewModels
                 CreateDateTime = DateTime.Now,
                 Description = Description,
                 Category = Category,
-                Ingredients = getIngredients(),
+                //Ingredients = getIngredients(),
                 IngredientsBlob = GetIngredientsNames()
             };
 
-            System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + recipe.Ingredients.Count);
+            //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + recipe.Ingredients.Count);
 
             await App.LocalDB.SaveItemAsync(recipe);
 
@@ -95,20 +95,20 @@ namespace Cookify.ViewModels
             //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);
         }
 
-        public List<Ingredient> getIngredients()
-        {
-            var list = new List<Ingredient>();
+        //public List<Ingredient> getIngredients()
+        //{
+        //    var list = new List<Ingredient>();
 
-            foreach (var data in Ingredients)
-            {
-                if (data.Selected)
-                {
-                    list.Add(new Ingredient() { Name = data.Data});
-                }
-            }
+        //    foreach (var data in Ingredients)
+        //    {
+        //        if (data.Selected)
+        //        {
+        //            list.Add(new Ingredient() { Name = data.Data });
+        //        }
+        //    }
 
-            return list;
-        }
+        //    return list;
+        //}
 
         public string GetIngredientsNames()
         {

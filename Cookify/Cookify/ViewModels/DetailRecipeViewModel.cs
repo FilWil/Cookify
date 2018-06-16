@@ -24,7 +24,7 @@ namespace Cookify.ViewModels
         private string _description { get; set; }
         private int _id;
         private DateTime _creationDateTime { get; set; }
-        private List<Ingredient> _ingredients { get; set; }
+        //private List<Ingredient> _ingredients { get; set; }
         public Command AddRecipeToFavoriteCommand { get; set; }
         //public ObservableCollection<string> IngredientsNamesCollection { get; set; }
         public ObservableCollection<IngredientNames> IngredientNamesList { get; set; }
@@ -73,16 +73,16 @@ namespace Cookify.ViewModels
             }
         }
 
-        public List<Ingredient> Ingredients
-        {
-            get => _ingredients;
-            set
-            {
-                if (_ingredients == value) return;
-                _ingredients = value;
-                OnPropertyChanged(nameof(Ingredients));
-            }
-        }
+        //public List<Ingredient> Ingredients
+        //{
+        //    get => _ingredients;
+        //    set
+        //    {
+        //        if (_ingredients == value) return;
+        //        _ingredients = value;
+        //        OnPropertyChanged(nameof(Ingredients));
+        //    }
+        //}
 
         public DetailRecipeViewModel(int selectedRecipeId)
         {
@@ -104,21 +104,25 @@ namespace Cookify.ViewModels
         private async void PopulateDetails(int selectedRecipeId)
         {
 
-            var rec = await App.LocalDB.GetItems<Recipe>();
+            var recipe = await App.LocalDB.GetItems<Recipe>();
 
-            foreach (var recipe in rec)
+            /*foreach (var recipe in rec)
             {
                 if (recipe.Id != selectedRecipeId) continue;
                 Category = recipe.Category;
                 RecipeName = recipe.DishName;
                 Description = recipe.Description;
                 CreationDateTime = recipe.CreateDateTime;
-                //var ing = recipe.Ingredients;
-                //Ingredients = ing;
                 Ingredients = recipe.Ingredients;
                 ExtractIngredientNamesList(recipe.IngredientsBlob, IngredientNamesList);
-            }
-            
+            }*/
+            Category = recipe[selectedRecipeId-1].Category;
+            RecipeName = recipe[selectedRecipeId-1].DishName;
+            Description = recipe[selectedRecipeId-1].Description;
+            CreationDateTime = recipe[selectedRecipeId - 1].CreateDateTime;
+            //Ingredients = recipe[selectedRecipeId - 1].Ingredients;
+
+            if(recipe[selectedRecipeId - 1].IngredientsBlob != null) ExtractIngredientNamesList(recipe[selectedRecipeId-1].IngredientsBlob, IngredientNamesList);
         }
 
         public void ExtractIngredientNamesList(string nameBlob, ObservableCollection<IngredientNames> collectionOfNames)

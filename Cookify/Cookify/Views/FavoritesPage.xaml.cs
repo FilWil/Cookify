@@ -1,4 +1,6 @@
-﻿using Cookify.ViewModels;
+﻿using Cookify.Models.SQLite;
+using Cookify.Services.Classes;
+using Cookify.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -19,5 +21,11 @@ namespace Cookify.Views
             var viewModel = new FavoritesViewModel();
             BindingContext = viewModel;
         }
-	}
+
+        private async Task ListView_OnItemTapped(object sender, ItemTappedEventArgs e)
+        {
+            var selectedRecipe = (Favorites) e.Item;
+            await NavigationService.NavigateTo(new DetailRecipePage(selectedRecipe.RecipeId));
+        }
+    }
 }

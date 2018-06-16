@@ -21,12 +21,12 @@
                           VerticalOptions="CenterAndExpand" 
                           HorizontalOptions="CenterAndExpand"
                           Grid.Row="0"
-                          Grid.Column="0">
+                          Grid.Column="0"
+                          ItemTapped="ListView_OnItemTapped">
 
                     <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding RecipeId}"  >
-                            </TextCell>
+                            <TextCell Text="{Binding RecipeName}"  Detail="{Binding RecipeId}"  ></TextCell>
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>

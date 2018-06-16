@@ -15,12 +15,8 @@ namespace Cookify.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class DetailRecipePage : ContentPage
 	{
-	    
-
-
         public DetailRecipePage(int selectedRecipeId)
         {
-
             InitializeComponent();
             var viewModel = new DetailRecipeViewModel(selectedRecipeId);
             BindingContext = viewModel;

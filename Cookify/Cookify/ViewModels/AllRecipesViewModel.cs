@@ -17,7 +17,7 @@ namespace Cookify.ViewModels
     class AllRecipesViewModel : BaseViewModel
     {
         public ObservableCollection<Recipe> Recipes { get; set; }
-        
+
         public AllRecipesViewModel()
         {
             Recipes = new ObservableCollection<Recipe>();
@@ -28,7 +28,6 @@ namespace Cookify.ViewModels
         private async void Init()
         {
             var recipes = await App.LocalDB.GetItems<Recipe>();
-
             foreach (var recipe in recipes)
             {
                 Recipes.Add(recipe);

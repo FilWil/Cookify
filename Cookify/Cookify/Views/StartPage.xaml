@@ -19,22 +19,31 @@
                 </Grid.ColumnDefinitions>
                 <!--Top row of buttons-->
                 <Button Text="Add New Recipe"
+                        ContentLayout="Top"
                         Grid.Row="0"
                         Grid.Column="0"
-                        Command="{Binding NavigateToAddRecipeCommand}"/>
+                        Command="{Binding NavigateToAddRecipeCommand}"
+                        Image="drawable/someImage.jpg"/>
                 <Button Text="All Recipes"
+                        ContentLayout="Top"
                         Grid.Row="0"
                         Grid.Column="1" 
-                        Command="{Binding NavigateToAllRecipesCommand}"/>
+                        Command="{Binding NavigateToAllRecipesCommand}"
+                        Image="someImage.jpg"/>
                 <!--Bottom row of buttons-->
                 <Button Text="Choose Ingredients"
+                        ContentLayout="Top"
                         Grid.Row="1"
                         Grid.Column="0" 
-                        Command="{Binding NavigateToChooseIngredientsCommand}"/>
+                        Command="{Binding NavigateToChooseIngredientsCommand}"
+                        Image="someImage.jpg"
+                        />
                 <Button Text="Favorites"
+                        ContentLayout="Top"
                         Grid.Row="1"
                         Grid.Column="1" 
-                        Command="{Binding NavigateToFavoritesCommand}"/>
+                        Command="{Binding NavigateToFavoritesCommand}"
+                        Image="someImage.jpg"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

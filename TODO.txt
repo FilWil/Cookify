@@ -1,13 +1,13 @@
-﻿1. AddRecipe:
-	- Dlaczego null przy wczytywaniu listy składników w Detail?
-
-2. Favorites
-	- Pobieranie wartości z przepisu
-	- Przyciśniecie na przepis powoduje przejście do jego szczegółów
+﻿2. Favorites
+	- Dodać tekst by wyglądem przypominał AllRecipies
 
 3. AllRecipes
-	-textcell wymienic na itemcell (zdjêcie + nazwa + czas gotowania + gwiazdka favorites)
+	-Ustawić ciekawostki (zdjêcie + nazwa + czas gotowania + gwiazdka favorites (?))
 
 4. SearchBar
 
 5. Usuwanie przepisów
+
+6. Ustawienie samych widoków (by były ładniejsze)
+
+System.Diagnostics.Debug.WriteLine("Item ::: " + item);

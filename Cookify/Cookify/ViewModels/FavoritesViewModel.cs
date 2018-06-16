@@ -14,7 +14,6 @@ namespace Cookify.ViewModels
         public FavoritesViewModel()
         {
             Favorites = new ObservableCollection<Favorites>();
-
             Init();
         }
 

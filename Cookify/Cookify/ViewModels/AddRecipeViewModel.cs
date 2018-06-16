@@ -14,12 +14,6 @@ using Cookify.Views;
 
 namespace Cookify.ViewModels
 {
-    public class SelectableData<T>
-    {
-        public string Data { get; set; }
-        public bool Selected { get; set; }
-    }
-
     public class AddRecipeViewModel : BaseViewModel
     {
         private string _dishName, _category, _description;
@@ -28,7 +22,7 @@ namespace Cookify.ViewModels
         public Command AddNewRecipeCommand { get; set; }
         public Command AddNewIngrediantCommand { get; set; }
 
-        public List<SelectableData<Ingredient>> Ingredients { get; set; }
+        public List<SelectableDataService<Ingredient>> Ingredients { get; set; }
 
 
         public string DishName
@@ -69,7 +63,7 @@ namespace Cookify.ViewModels
             AddNewRecipeCommand = new Command(async () => await AddNewRecipe());
             AddNewIngrediantCommand = new Command(async () => await NavigateToNextPage(new AddIngredientPage()));
             
-            Ingredients = new List<SelectableData<Ingredient>>();
+            Ingredients = new List<SelectableDataService<Ingredient>>();
             Init();
         }
 
@@ -133,7 +127,7 @@ namespace Cookify.ViewModels
 
             foreach (var ingredient in ingredients)
             {
-                Ingredients.Add(new SelectableData<Ingredient>() { Data = ingredient.Name, Selected = false });
+                Ingredients.Add(new SelectableDataService<Ingredient>() { Data = ingredient.Name, Selected = false });
             }
         }
     }

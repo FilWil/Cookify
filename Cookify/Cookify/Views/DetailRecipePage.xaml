@@ -3,47 +3,33 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cookify.Views.DetailRecipePage">
     <ContentPage.Content>
-        <Grid>
-            <!--Top row-->
-            <Grid.RowDefinitions>
-                <RowDefinition Height="*" />
-                <RowDefinition Height="*" />
-            </Grid.RowDefinitions>
-            <!--Bottom row-->
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="*" />
-                <ColumnDefinition Width="*" />
-            </Grid.ColumnDefinitions>
-            <StackLayout Grid.ColumnSpan="2" >
-                <Label Text="{Binding RecipeName}" HorizontalOptions="CenterAndExpand" FontSize="40" />
-                <Label />
-                <Image />
-                <Label />
-                <Label Text="{Binding Category}" HorizontalOptions="CenterAndExpand" FontSize="Micro"/>
-                <Label />
-                <Label />
-                <ListView ItemsSource="{Binding IngredientNamesList}" 
+        <StackLayout >
+            <Label Text="{Binding RecipeName}" HorizontalOptions="CenterAndExpand" FontSize="40" />
+            <Label />
+            <Image />
+            <Label />
+            <Label Text="{Binding Category}" HorizontalOptions="CenterAndExpand" FontSize="Micro"/>
+            <Label />
+            <Label />
+            <Button Text="Dodaj do ulubionych"
+                        BackgroundColor="White"
+                        BorderRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        HorizontalOptions="Center"
+                        Command="{Binding AddRecipeToFavoriteCommand}"/>
+            <ListView ItemsSource="{Binding IngredientNamesList}" 
                           VerticalOptions="StartAndExpand"
                           HorizontalOptions="CenterAndExpand"
                           RowHeight="50">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding Name}"/>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-                <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
-                <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
-                <Label />
-                <Label />
-                <Button Text="Dodaj do ulubionych"
-                    BackgroundColor="White"
-                    BorderRadius="10"
-                    BorderWidth="2"
-                    BorderColor="Black"
-                    HorizontalOptions="Center"
-                    Command="{Binding AddRecipeToFavoriteCommand}"/>
-            </StackLayout>
-        </Grid>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextCell Text="{Binding Name}"/>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+            <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+        </StackLayout>
     </ContentPage.Content>
 </ContentPage>

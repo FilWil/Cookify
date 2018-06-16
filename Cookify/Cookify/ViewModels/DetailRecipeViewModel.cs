@@ -88,6 +88,7 @@ namespace Cookify.ViewModels
         {
             IngredientNamesList = new ObservableCollection<IngredientNames>();
             PopulateDetails(selectedRecipeId);
+            _id = selectedRecipeId;
             AddRecipeToFavoriteCommand = new Command(async () => await AddRecipeToFavorite());
         }
 

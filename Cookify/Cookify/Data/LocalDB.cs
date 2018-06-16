@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Cookify.Models.SQLite;
@@ -45,6 +46,38 @@ namespace Cookify.Data
         internal async Task<List<T>> GetItems<T>() where T : class, new()
         {
             return await database.Table<T>().ToListAsync();
+        }
+
+        internal async Task<List<Recipe>> GetRecipesByChosenIngredients(List<Ingredient> Ingredients)
+        {
+            var ingredientNamesFromRecipes = new List<string>();
+            var ingredientNamesFromIngredients = new StringBuilder();
+
+            var recipes = await database.Table<Recipe>().ToListAsync();
+
+            foreach (var recipe in recipes)
+            {
+                ingredientNamesFromRecipes.Add(recipe.IngredientsBlob);
+            }
+
+            //"mąka jajko woda"
+            //"dzem ser jajko"
+
+            foreach (var ingredient in Ingredients)
+            {
+                ingredientNamesFromIngredients.Append(ingredient.Name + " ");
+            }
+
+            ingredientNamesFromIngredients.Remove(ingredientNamesFromIngredients.Length -1 , 1);
+
+            //for (int i = 0; i < ingredientNamesFromRecipes.Count; i++)
+            //{
+            //    if(ingredientNamesFromRecipes[i] == )
+            //}
+
+            //ingredientNamesFromRecipes.Where(ing => ing.)
+
+            //return await database.Table<Recipe>().Where()
         }
     }
 }

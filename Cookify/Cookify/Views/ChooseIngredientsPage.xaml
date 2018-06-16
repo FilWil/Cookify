@@ -7,6 +7,26 @@
             <Label Text="Choose ingredients"
                 VerticalOptions="CenterAndExpand" 
                 HorizontalOptions="CenterAndExpand" />
+
+            <ListView ItemsSource="{Binding Ingredients}" Margin="20">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Margin="0,0,0,10">
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*" />
+                                    <ColumnDefinition Width="Auto" />
+                                </Grid.ColumnDefinitions>
+                                <StackLayout VerticalOptions="CenterAndExpand">
+                                    <Label Text="{Binding Data}"  />
+                                    <!--<Label Text="{Binding Id}" FontSize="10" />-->
+                                </StackLayout>
+                                <Switch IsToggled="{Binding Selected}" Grid.Column="1" />
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -83,7 +83,7 @@ namespace Cookify.ViewModels
 
             await App.LocalDB.SaveItemAsync(recipe);
 
-            await NavigateToNextPage(new AllRecipesPage());
+            await NavigateToNextPage(new AllRecipesPage(true, null));
 
             //var temp = await App.LocalDB.GetRecipeById(recipe.Id);
             //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);

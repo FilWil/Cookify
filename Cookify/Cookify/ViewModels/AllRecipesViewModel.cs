@@ -21,13 +21,21 @@ namespace Cookify.ViewModels
         public AllRecipesViewModel()
         {
             Recipes = new ObservableCollection<Recipe>();
-
-            Init();
+            Init(null);
         }
 
-        private async void Init()
+        public AllRecipesViewModel(List<Recipe> selectionOfRecipes)
         {
-            var recipes = await App.LocalDB.GetItems<Recipe>();
+            Recipes = new ObservableCollection<Recipe>();
+            Init(selectionOfRecipes);
+        }
+
+        private async void Init(List<Recipe> selectionOfRecipes)
+        {
+            List<Recipe> recipes;
+            if (selectionOfRecipes == null) recipes = await App.LocalDB.GetItems<Recipe>();
+            else recipes = selectionOfRecipes;
+
             foreach (var recipe in recipes)
             {
                 Recipes.Add(recipe);

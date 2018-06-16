@@ -18,7 +18,7 @@ namespace Cookify.ViewModels
         public StartViewModel()
         {
             NavigateToAddRecipeCommand = new Command(async () => await NavigateToNextPage(new AddRecipePage()));
-            NavigateToAllRecipesCommand = new Command(async () => await NavigateToNextPage(new AllRecipesPage()));
+            NavigateToAllRecipesCommand = new Command(async () => await NavigateToNextPage(new AllRecipesPage(true, null)));
             NavigateToChooseIngredientsCommand = new Command(async () => await NavigateToNextPage(new ChooseIngredientsPage()));
             NavigateToFavoritesCommand = new Command(async () => await NavigateToNextPage(new FavoritesPage()));
         }

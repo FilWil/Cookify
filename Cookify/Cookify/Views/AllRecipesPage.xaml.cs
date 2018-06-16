@@ -15,10 +15,14 @@ namespace Cookify.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class AllRecipesPage : ContentPage
     {
-        public AllRecipesPage()
+        public AllRecipesPage(bool isViewEverything, List<Recipe> selectionOfRecipes)
         {
             InitializeComponent();
-            var viewModel = new AllRecipesViewModel();
+            AllRecipesViewModel viewModel;
+
+            if (isViewEverything) viewModel = new AllRecipesViewModel();
+            else viewModel = new AllRecipesViewModel(selectionOfRecipes);
+
             BindingContext = viewModel;
         }
 

@@ -27,6 +27,13 @@
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
+            <Button Text="Znajdź"
+                        BackgroundColor="White"
+                        BorderRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        HorizontalOptions="Center"
+                        Command="{Binding FindRecipesBasedOnSelectionCommand}"/>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -51,33 +51,40 @@ namespace Cookify.Data
         internal async Task<List<Recipe>> GetRecipesByChosenIngredients(List<Ingredient> Ingredients)
         {
             var ingredientNamesFromRecipes = new List<string>();
-            var ingredientNamesFromIngredients = new StringBuilder();
 
             var recipes = await database.Table<Recipe>().ToListAsync();
+            int[] priorityList = new int[recipes.Count];
 
             foreach (var recipe in recipes)
             {
                 ingredientNamesFromRecipes.Add(recipe.IngredientsBlob);
             }
 
-            //"mąka jajko woda"
-            //"dzem ser jajko"
+            string[] names = ingredientNamesFromRecipes.ToArray();
 
-            foreach (var ingredient in Ingredients)
+            for(var i = 0; i < names.Length; i++)
             {
-                ingredientNamesFromIngredients.Append(ingredient.Name + " ");
+                string[] namesOfSelected = names[i].Split(' ');
+                foreach (var name in namesOfSelected)
+                {
+                    foreach(var nameFromRecipe in Ingredients)
+                    {
+                        if (nameFromRecipe.Name == name) priorityList[i] += 1;
+                    }
+                }
             }
 
-            ingredientNamesFromIngredients.Remove(ingredientNamesFromIngredients.Length -1 , 1);
+            var FinalSelection = new List<Recipe>();
 
-            //for (int i = 0; i < ingredientNamesFromRecipes.Count; i++)
-            //{
-            //    if(ingredientNamesFromRecipes[i] == )
-            //}
+            for(int i = 0; i < priorityList.Length; i++)
+            {
+                if (priorityList[i] > 0)
+                {
+                    FinalSelection.Add(recipes[i]);
+                }
+            }
 
-            //ingredientNamesFromRecipes.Where(ing => ing.)
-
-            //return await database.Table<Recipe>().Where()
+            return FinalSelection;
         }
     }
 }

@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cookify.Views.DetailRecipePage">
     <ContentPage.Content>
-        <StackLayout >
+        <StackLayout BackgroundColor="White">
             <Label Text="{Binding RecipeName}" HorizontalOptions="CenterAndExpand" FontSize="40" />
             <Label />
             <Image />
@@ -13,7 +13,7 @@
             <Label />
             <Button Text="Dodaj do ulubionych"
                         BackgroundColor="White"
-                        BorderRadius="10"
+                        CornerRadius="10"
                         BorderWidth="2"
                         BorderColor="Black"
                         HorizontalOptions="Center"

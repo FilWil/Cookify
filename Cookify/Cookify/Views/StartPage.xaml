@@ -3,24 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Cookify.Views.StartPage">
     <ContentPage.Content>
-        <StackLayout>
-            <!--Search bar at the top of page-->
+        <StackLayout BackgroundColor="White">
             <Grid>
-                <!--Top row-->
+  
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <!--Bottom row-->
+
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
 
-                <Entry Placeholder="Search" x:Name="EntrySearchBar" Grid.Row="0" Grid.Column="0" Text="{Binding Search, Mode=TwoWay}"/>
-                <Button Grid.Row="0" Grid.Column="1" Image="baseline_search_black_18.png" Command="{Binding SearchCommand}" />
+                <Entry Placeholder="Search" 
+                       x:Name="EntrySearchBar" 
+                       Grid.Row="0" 
+                       Grid.Column="0" 
+                       Text="{Binding Search, Mode=TwoWay}"/>
+                <Button Grid.Row="0" 
+                        Grid.Column="1" 
+                        Image="baseline_search_black_24.png" 
+                        Command="{Binding SearchCommand}" 
+                        BackgroundColor="White"/>
             </Grid>
-            
+                 <Image Source="drawable/salad.jpg"></Image>
             <Grid>
                 <!--Top row-->
                 <Grid.RowDefinitions>
@@ -38,27 +45,43 @@
                         Grid.Row="0"
                         Grid.Column="0"
                         Command="{Binding NavigateToAddRecipeCommand}"
-                        Image="drawable/someImage.jpg"/>
+                        BackgroundColor="#e0a641"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        Margin="10, 0, 0, 0"/>
                 <Button Text="All Recipes"
                         ContentLayout="Top"
                         Grid.Row="0"
                         Grid.Column="1" 
                         Command="{Binding NavigateToAllRecipesCommand}"
-                        Image="someImage.jpg"/>
+                        BackgroundColor="#e0a641"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        Margin="0, 0, 10, 0"
+                        />
                 <!--Bottom row of buttons-->
-                <Button Text="Choose Ingredients"
+                <Button Text="Ingredients"
                         ContentLayout="Top"
                         Grid.Row="1"
                         Grid.Column="0" 
-                        Command="{Binding NavigateToChooseIngredientsCommand}"
-                        Image="someImage.jpg"
-                        />
+                        Command="{Binding NavigateToChooseIngredientsCommand}" 
+                        BackgroundColor="#e0a641"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        Margin="10, 0, 0, 0"/>
                 <Button Text="Favorites"
                         ContentLayout="Top"
                         Grid.Row="1"
                         Grid.Column="1" 
                         Command="{Binding NavigateToFavoritesCommand}"
-                        Image="someImage.jpg"/>
+                        BackgroundColor="#e0a641"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        Margin="0, 0, 10, 0"/>
             </Grid>
         </StackLayout>
     </ContentPage.Content>

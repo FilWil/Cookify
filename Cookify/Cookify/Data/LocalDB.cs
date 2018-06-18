@@ -15,9 +15,9 @@ namespace Cookify.Data
         public LocalDB(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            database.DropTableAsync<Recipe>().Wait();
-            database.DropTableAsync<Ingredient>().Wait();
-            database.DropTableAsync<Favorites>().Wait();
+            //database.DropTableAsync<Recipe>().Wait();
+            //database.DropTableAsync<Ingredient>().Wait();
+            //database.DropTableAsync<Favorites>().Wait();
             database.CreateTableAsync<Recipe>().Wait();
             database.CreateTableAsync<Ingredient>().Wait();
             database.CreateTableAsync<Favorites>().Wait();
@@ -88,14 +88,17 @@ namespace Cookify.Data
 
             var FinalSelection = new List<Recipe>();
 
-            for(int i = 0; i < priorityList.Length; i++)
+            for(int j = priorityList.Max(); j >= 1; j--)
             {
-                if (priorityList[i] > 0)
+                for (int i = 0; i < priorityList.Length; i++)
                 {
-                    FinalSelection.Add(recipes[i]);
+                    if (priorityList[i] == j)
+                    {
+                        FinalSelection.Add(recipes[i]);
+                    }
                 }
             }
-
+            
             return FinalSelection;
         }
     }

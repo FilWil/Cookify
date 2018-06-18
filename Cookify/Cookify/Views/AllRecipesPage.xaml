@@ -5,9 +5,8 @@
              Title="ALL RECIPES">
     <ContentPage.Content>
         <StackLayout>
-            <!--<Button Text="Banana" Command="{Binding DetailRecipeCommand}" />-->
             <ListView ItemsSource="{Binding Recipes}" 
-                          VerticalOptions="CenterAndExpand" 
+                          VerticalOptions="FillAndExpand" 
                           HorizontalOptions="CenterAndExpand"
                           ItemTapped="ListView_OnItemTapped">
                 <ListView.ItemTemplate>
@@ -15,15 +14,15 @@
                         <ViewCell>
                             <Grid Padding="5">
                                 <Grid.RowDefinitions>
-                                    <RowDefinition Height="20"></RowDefinition>
-                                    <RowDefinition Height="20"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
                                     <ColumnDefinition Width="*"></ColumnDefinition>
-                                    <ColumnDefinition Width="40"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding DishName}" LineBreakMode="TailTruncation"></Label>
+                                <Label Grid.Row="0" Grid.Column="0" Text="{Binding DishName}" TextColor="Orange" LineBreakMode="TailTruncation"></Label>
                                 <Label Grid.Row="1" Grid.Column="0" Text="{Binding Id}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
                                 <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="{Binding Image}" Aspect="AspectFill"/>
                             </Grid>

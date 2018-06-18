@@ -73,17 +73,6 @@ namespace Cookify.ViewModels
             }
         }
 
-        //public List<Ingredient> Ingredients
-        //{
-        //    get => _ingredients;
-        //    set
-        //    {
-        //        if (_ingredients == value) return;
-        //        _ingredients = value;
-        //        OnPropertyChanged(nameof(Ingredients));
-        //    }
-        //}
-
         public DetailRecipeViewModel(int selectedRecipeId)
         {
             IngredientNamesList = new ObservableCollection<IngredientNames>();
@@ -107,28 +96,16 @@ namespace Cookify.ViewModels
 
             var recipe = await App.LocalDB.GetItems<Recipe>();
 
-            /*foreach (var recipe in rec)
-            {
-                if (recipe.Id != selectedRecipeId) continue;
-                Category = recipe.Category;
-                RecipeName = recipe.DishName;
-                Description = recipe.Description;
-                CreationDateTime = recipe.CreateDateTime;
-                Ingredients = recipe.Ingredients;
-                ExtractIngredientNamesList(recipe.IngredientsBlob, IngredientNamesList);
-            }*/
             Category = recipe[selectedRecipeId-1].Category;
             RecipeName = recipe[selectedRecipeId-1].DishName;
             Description = recipe[selectedRecipeId-1].Description;
             CreationDateTime = recipe[selectedRecipeId - 1].CreateDateTime;
-            //Ingredients = recipe[selectedRecipeId - 1].Ingredients;
 
             if(recipe[selectedRecipeId - 1].IngredientsBlob != null) ExtractIngredientNamesList(recipe[selectedRecipeId-1].IngredientsBlob, IngredientNamesList);
         }
 
         public void ExtractIngredientNamesList(string nameBlob, ObservableCollection<IngredientNames> collectionOfNames)
         { 
-
             string[] names = nameBlob.Split(' ');
 
             foreach (var name in names)

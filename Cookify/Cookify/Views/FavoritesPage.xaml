@@ -5,32 +5,31 @@
              Title="FAVORITES PAGE">
     <ContentPage.Content>
         <StackLayout>
-            <Grid>
-                <!--Top row-->
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="*" />
-                    <RowDefinition Height="*" />
-                </Grid.RowDefinitions>
-                <!--Bottom row-->
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*" />
-                    <ColumnDefinition Width="*" />
-                </Grid.ColumnDefinitions>
-                <!--<Button Text="Banana" Command="{Binding DetailRecipeCommand}" />-->
-                <ListView ItemsSource="{Binding Favorites}" 
-                          VerticalOptions="CenterAndExpand" 
+            <ListView ItemsSource="{Binding Favorites}" 
+                          VerticalOptions="FillAndExpand" 
                           HorizontalOptions="CenterAndExpand"
-                          Grid.Row="0"
-                          Grid.Column="0"
                           ItemTapped="ListView_OnItemTapped">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid Padding="5">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                    <RowDefinition Height="*"></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"></ColumnDefinition>
+                                    <ColumnDefinition Width="Auto"></ColumnDefinition>
+                                </Grid.ColumnDefinitions>
 
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <TextCell Text="{Binding RecipeName}"  Detail="{Binding RecipeId}"  ></TextCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
-            </Grid>
+                                <!--<Label Grid.Row="0" Grid.Column="0" Text="{Binding DishName}" TextColor="Orange" LineBreakMode="TailTruncation"></Label>-->
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecipeId}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                <!--<Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="{Binding Image}" Aspect="AspectFill"/>-->
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>

@@ -19,16 +19,17 @@
                         HorizontalOptions="Center"
                         Command="{Binding AddRecipeToFavoriteCommand}"/>
             <ListView ItemsSource="{Binding IngredientNamesList}" 
-                          VerticalOptions="StartAndExpand"
+                          VerticalOptions="Fill"
                           HorizontalOptions="CenterAndExpand"
                           RowHeight="50">
                 <ListView.ItemTemplate>
                     <DataTemplate>
-                        <TextCell Text="{Binding Name}"/>
+                        <TextCell IsEnabled="False" Text="{Binding Name}"/>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>
             <Label Text="{Binding Description}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
+            <Label />
             <Label Text="{Binding CreationDateTime}" HorizontalOptions="CenterAndExpand" FontSize="Medium"/>
         </StackLayout>
     </ContentPage.Content>

@@ -15,9 +15,9 @@ namespace Cookify.Data
         public LocalDB(string dbPath)
         {
             database = new SQLiteAsyncConnection(dbPath);
-            //database.DropTableAsync<Recipe>().Wait();
-            //database.DropTableAsync<Ingredient>().Wait();
-            //database.DropTableAsync<Favorites>().Wait();
+            database.DropTableAsync<Recipe>().Wait();
+            database.DropTableAsync<Ingredient>().Wait();
+            database.DropTableAsync<Favorites>().Wait();
             database.CreateTableAsync<Recipe>().Wait();
             database.CreateTableAsync<Ingredient>().Wait();
             database.CreateTableAsync<Favorites>().Wait();
@@ -36,6 +36,11 @@ namespace Cookify.Data
         internal async Task<Recipe> GetRecipeById(int id)
         {
             return await database.Table<Recipe>().Where(r => r.Id == id).FirstOrDefaultAsync();
+        }
+
+        internal async Task<int> RemoveRecipeById(int id)
+        {
+            return await database.Table<Recipe>().Where(r => r.Id == id).DeleteAsync();
         }
 
         internal async Task<List<Recipe>> GetAllRecipes()

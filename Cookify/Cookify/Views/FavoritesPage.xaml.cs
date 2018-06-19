@@ -15,7 +15,7 @@ namespace Cookify.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class FavoritesPage : ContentPage
 	{
-		public FavoritesPage ()
+		public FavoritesPage()
 		{
             InitializeComponent();
             var viewModel = new FavoritesViewModel();

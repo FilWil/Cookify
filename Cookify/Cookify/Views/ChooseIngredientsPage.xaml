@@ -19,7 +19,6 @@
                                 </Grid.ColumnDefinitions>
                                 <StackLayout VerticalOptions="CenterAndExpand">
                                     <Label Text="{Binding Data}"  />
-                                    <!--<Label Text="{Binding Id}" FontSize="10" />-->
                                 </StackLayout>
                                 <Switch IsToggled="{Binding Selected}" Grid.Column="1" />
                             </Grid>

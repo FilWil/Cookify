@@ -19,7 +19,6 @@ namespace Cookify.ViewModels
 
         private string _search;
 
-
         public string Search
         {
             get => _search;
@@ -30,6 +29,7 @@ namespace Cookify.ViewModels
                 OnPropertyChanged(nameof(Search));
             }
         }
+
         public StartViewModel()
         {
             NavigateToAddRecipeCommand = new Command(async () => await NavigateToNextPage(new AddRecipePage()));
@@ -47,7 +47,6 @@ namespace Cookify.ViewModels
         private async Task SearchRecipes(string searchPattern)
         {
             List<Recipe> chosenRecipesList = await App.LocalDB.GetRecipesBySearch(searchPattern);
-
             await NavigationService.NavigateTo(new AllRecipesPage(false, chosenRecipesList));
         }
     }

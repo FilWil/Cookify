@@ -12,7 +12,7 @@ namespace Cookify.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class AddRecipePage : ContentPage
 	{
-	    public AddRecipePage ()
+	    public AddRecipePage()
 		{
 			InitializeComponent ();
 		    var viewModel = new AddRecipeViewModel();

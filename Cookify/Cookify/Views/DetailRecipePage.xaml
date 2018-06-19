@@ -6,18 +6,24 @@
         <StackLayout BackgroundColor="White">
             <Label Text="{Binding RecipeName}" HorizontalOptions="CenterAndExpand" FontSize="40" />
             <Label />
-            <Image />
             <Label />
             <Label Text="{Binding Category}" HorizontalOptions="CenterAndExpand" FontSize="Micro"/>
             <Label />
             <Label />
-            <Button Text="Dodaj do ulubionych"
+            <Button Text="Add to Favorites"
                         BackgroundColor="White"
                         CornerRadius="10"
                         BorderWidth="2"
                         BorderColor="Black"
                         HorizontalOptions="Center"
                         Command="{Binding AddRecipeToFavoriteCommand}"/>
+            <Button Text="Remove Recipe"
+                        BackgroundColor="White"
+                        CornerRadius="10"
+                        BorderWidth="2"
+                        BorderColor="Black"
+                        HorizontalOptions="Center"
+                        Command="{Binding RemoveRecipeCommand}"/>
             <ListView ItemsSource="{Binding IngredientNamesList}" 
                           VerticalOptions="Fill"
                           HorizontalOptions="CenterAndExpand"

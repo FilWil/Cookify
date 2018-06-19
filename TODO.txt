@@ -1,13 +1,5 @@
-﻿2. Favorites
-	- Dodać tekst by wyglądem przypominał AllRecipies
+﻿Favorites - Dodać tekst by wyglądem przypominał AllRecipies
 
-3. AllRecipes
-	-Ustawić ciekawostki (zdjêcie + nazwa + czas gotowania + gwiazdka favorites (?))
-
-4. SearchBar
-
-5. Usuwanie przepisów
-
-6. Ustawienie samych widoków (by były ładniejsze)
+3. AllRecipes - Ustawić ciekawostki (zdjêcie + nazwa + czas gotowania + gwiazdka favorites (?))
 
 System.Diagnostics.Debug.WriteLine("Item ::: " + item);

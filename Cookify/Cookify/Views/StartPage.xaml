@@ -5,17 +5,14 @@
     <ContentPage.Content>
         <StackLayout BackgroundColor="White">
             <Grid>
-  
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="4*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-
                 <Entry Placeholder="Search" 
                        x:Name="EntrySearchBar" 
                        Grid.Row="0" 
@@ -29,17 +26,14 @@
             </Grid>
                  <Image Source="drawable/salad.jpg"></Image>
             <Grid>
-                <!--Top row-->
                 <Grid.RowDefinitions>
                     <RowDefinition Height="*" />
                     <RowDefinition Height="*" />
                 </Grid.RowDefinitions>
-                <!--Bottom row-->
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*" />
                     <ColumnDefinition Width="*" />
                 </Grid.ColumnDefinitions>
-                <!--Top row of buttons-->
                 <Button Text="Add New Recipe"
                         ContentLayout="Top"
                         Grid.Row="0"
@@ -61,7 +55,6 @@
                         BorderColor="Black"
                         Margin="0, 0, 10, 0"
                         />
-                <!--Bottom row of buttons-->
                 <Button Text="Ingredients"
                         ContentLayout="Top"
                         Grid.Row="1"

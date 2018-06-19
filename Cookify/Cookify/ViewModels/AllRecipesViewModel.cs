@@ -36,10 +36,7 @@ namespace Cookify.ViewModels
             if (selectionOfRecipes == null) recipes = await App.LocalDB.GetItems<Recipe>();
             else recipes = selectionOfRecipes;
 
-            foreach (var recipe in recipes)
-            {
-                Recipes.Add(recipe);
-            }
+            foreach (var recipe in recipes) Recipes.Add(recipe);
         }
     }
 }

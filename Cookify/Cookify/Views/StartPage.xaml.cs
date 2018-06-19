@@ -12,9 +12,9 @@ namespace Cookify.Views
 	[XamlCompilation(XamlCompilationOptions.Compile)]
 	public partial class StartPage : ContentPage
 	{
-	    public StartPage ()
+	    public StartPage()
 		{
-		    InitializeComponent ();
+		    InitializeComponent();
 		    var viewModel = new StartViewModel();
 		    BindingContext = viewModel;
 		}

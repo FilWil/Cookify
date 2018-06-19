@@ -5,7 +5,7 @@
     <ContentPage.Content>
         <StackLayout>
             <Label Text="Ingredient name"/>
-            <Entry Placeholder="" x:Name="EntryIngredientName" Text="{Binding IngName, Mode=TwoWay}"/>
+            <Entry x:Name="EntryIngredientName" Text="{Binding IngName, Mode=TwoWay}"/>
             <Button Text="Add ingredient" x:Name="ButtonAddIngredient" Command="{Binding AddNewIngredientCommand}"/>
         </StackLayout>
     </ContentPage.Content>

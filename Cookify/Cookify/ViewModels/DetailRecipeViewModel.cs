@@ -7,6 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using Cookify.Data;
 using Cookify.Models.SQLite;
+using Cookify.Views;
 using Xamarin.Forms;
 
 namespace Cookify.ViewModels
@@ -24,9 +25,10 @@ namespace Cookify.ViewModels
         private string _description { get; set; }
         private int _id;
         private DateTime _creationDateTime { get; set; }
-        //private List<Ingredient> _ingredients { get; set; }
+
         public Command AddRecipeToFavoriteCommand { get; set; }
-        //public ObservableCollection<string> IngredientsNamesCollection { get; set; }
+        public Command RemoveRecipeCommand { get; set; }
+
         public ObservableCollection<IngredientNames> IngredientNamesList { get; set; }
 
         public string RecipeName
@@ -79,6 +81,7 @@ namespace Cookify.ViewModels
             PopulateDetails(selectedRecipeId);
             _id = selectedRecipeId;
             AddRecipeToFavoriteCommand = new Command(async () => await AddRecipeToFavorite());
+            RemoveRecipeCommand = new Command(async () => await RemoveRecipe());
         }
 
         public async Task AddRecipeToFavorite()
@@ -91,27 +94,30 @@ namespace Cookify.ViewModels
             await App.LocalDB.SaveItemAsync(favorite);
         }
 
+        public async Task RemoveRecipe()
+        {
+            await App.LocalDB.RemoveRecipeById(_id);
+            await NavigateToNextPage(new AllRecipesPage(true, null));
+        }
+
         private async void PopulateDetails(int selectedRecipeId)
         {
-
             var recipe = await App.LocalDB.GetItems<Recipe>();
+            var chosenRecipe = recipe[selectedRecipeId - 1];
 
-            Category = recipe[selectedRecipeId-1].Category;
-            RecipeName = recipe[selectedRecipeId-1].DishName;
-            Description = recipe[selectedRecipeId-1].Description;
-            CreationDateTime = recipe[selectedRecipeId - 1].CreateDateTime;
+            Category = chosenRecipe.Category;
+            RecipeName = chosenRecipe.DishName;
+            Description = chosenRecipe.Description;
+            CreationDateTime = chosenRecipe.CreateDateTime;
 
-            if(recipe[selectedRecipeId - 1].IngredientsBlob != null) ExtractIngredientNamesList(recipe[selectedRecipeId-1].IngredientsBlob, IngredientNamesList);
+            if(chosenRecipe.IngredientsBlob != null) ExtractIngredientNamesList(chosenRecipe.IngredientsBlob, IngredientNamesList);
         }
 
         public void ExtractIngredientNamesList(string nameBlob, ObservableCollection<IngredientNames> collectionOfNames)
         { 
             string[] names = nameBlob.Split(' ');
 
-            foreach (var name in names)
-            {
-                collectionOfNames.Add(new IngredientNames {Name = name});
-            }
+            foreach (var name in names) collectionOfNames.Add(new IngredientNames {Name = name});
         }
     }
 }

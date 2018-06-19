@@ -13,6 +13,7 @@ namespace Cookify.ViewModels
     public class ChooseIngredientsViewModel : BaseViewModel
     {
         public List<SelectableDataService<Ingredient>> Ingredients { get; set; }
+
         public Command FindRecipesBasedOnSelectionCommand { get; set; }
 
         public ChooseIngredientsViewModel()
@@ -44,12 +45,9 @@ namespace Cookify.ViewModels
                 }
             }
 
-            System.Diagnostics.Debug.WriteLine("Item ::: " + list.Count);
-
             List<Recipe> chosenRecipesList = await App.LocalDB.GetRecipesByChosenIngredients(list);
 
             await NavigationService.NavigateTo(new AllRecipesPage(false, chosenRecipesList));
-
         }
     }
 }

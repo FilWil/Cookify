@@ -17,8 +17,7 @@ namespace Cookify.ViewModels
     public class AddRecipeViewModel : BaseViewModel
     {
         private string _dishName, _category, _description;
-        private DateTime _createDateTime;
-        //public ObservableCollection<Ingredient> Ingredients;
+
         public Command AddNewRecipeCommand { get; set; }
         public Command AddNewIngrediantCommand { get; set; }
 
@@ -75,34 +74,13 @@ namespace Cookify.ViewModels
                 CreateDateTime = DateTime.Now,
                 Description = Description,
                 Category = Category,
-                //Ingredients = getIngredients(),
                 IngredientsBlob = GetIngredientsNames()
             };
-
-            //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + recipe.Ingredients.Count);
 
             await App.LocalDB.SaveItemAsync(recipe);
 
             await NavigateToNextPage(new AllRecipesPage(true, null));
-
-            //var temp = await App.LocalDB.GetRecipeById(recipe.Id);
-            //System.Diagnostics.Debug.WriteLine("ILOŚć SKŁADNIKów ::: " + temp.IngredientsBlob.Length);
         }
-
-        //public List<Ingredient> getIngredients()
-        //{
-        //    var list = new List<Ingredient>();
-
-        //    foreach (var data in Ingredients)
-        //    {
-        //        if (data.Selected)
-        //        {
-        //            list.Add(new Ingredient() { Name = data.Data });
-        //        }
-        //    }
-
-        //    return list;
-        //}
 
         public string GetIngredientsNames()
         {

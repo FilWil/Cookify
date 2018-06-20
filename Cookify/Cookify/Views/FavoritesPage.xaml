@@ -22,7 +22,7 @@
                                     <ColumnDefinition Width="Auto"></ColumnDefinition>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecipeId}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
+                                <Label Grid.Row="1" Grid.Column="0" Text="{Binding RecipeName}" Font="Small"  TextColor="Gray" LineBreakMode="TailTruncation"></Label>
                             </Grid>
                         </ViewCell>
                     </DataTemplate>

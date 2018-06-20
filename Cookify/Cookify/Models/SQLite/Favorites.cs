@@ -13,5 +13,7 @@ namespace Cookify.Models.SQLite
 
         [ForeignKey(typeof(Recipe))]
         public int RecipeId { get; set; }
+
+        public string RecipeName { get; set; }
     }
 }

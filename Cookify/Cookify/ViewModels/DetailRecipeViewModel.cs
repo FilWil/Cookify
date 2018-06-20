@@ -88,7 +88,8 @@ namespace Cookify.ViewModels
         {
             var favorite = new Favorites()
             {
-                RecipeId = _id
+                RecipeId = _id,
+                RecipeName = _recipeName
             };
 
             await App.LocalDB.SaveItemAsync(favorite);
